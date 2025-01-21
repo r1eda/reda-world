@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تفاصيل تطبيق الهاتف</title>
+    <style>
+      body {
+        font-family: "Cairo", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        color: #333;
+        overflow-x: hidden;
+      }
+
+      nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #34495e;
+        padding: 1rem 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      nav a {
+        color: #ecf0f1;
+        text-decoration: none;
+        padding: 0.8rem 1.5rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+        transition: color 0.3s, transform 0.3s;
+      }
+
+      nav a:hover {
+        color: #1abc9c;
+        transform: scale(1.1);
+      }
+
+      .container {
+        width: 85%;
+        max-width: 1200px;
+        margin: 3rem auto;
+      }
+
+      .section {
+        margin: 3rem 0;
+        animation: fadeInUp 1.2s ease-out;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .card {
+        background: white;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        padding: 2rem;
+        margin-bottom: 2rem;
+        border-radius: 12px;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .project-image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+      }
+
+      .screenshots-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .screenshots-grid img {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .screenshots-grid img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .features ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .features ul li {
+        margin: 0.8rem 0;
+        font-size: 1.1rem;
+      }
+
+      .features ul li i {
+        color: #1abc9c;
+        margin-left: 0.5rem;
+      }
+
+      .download-links {
+        text-align: center;
+        margin: 2rem 0;
+      }
+
+      .download-button img {
+        height: 50px;
+        margin: 0.5rem;
+        transition: transform 0.3s;
+      }
+
+      .download-button img:hover {
+        transform: scale(1.1);
+      }
+
+      .user-reviews .review {
+        background: #f9f9f9;
+        padding: 1rem;
+        border-radius: 8px;
+        margin: 1rem 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .user-reviews .stars {
+        color: #f1c40f;
+        margin-top: 0.5rem;
+      }
+
+      .faq-item {
+        margin: 1rem 0;
+        padding: 1rem;
+        background: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .faq-item h4 {
+        margin-bottom: 0.5rem;
+        color: #34495e;
+      }
+
+      .share-buttons {
+        text-align: center;
+        margin: 2rem 0;
+      }
+
+      .share-button {
+        font-size: 2rem;
+        margin: 0 0.5rem;
+        color: #34495e;
+        transition: color 0.3s, transform 0.3s;
+      }
+
+      .share-button:hover {
+        color: #1abc9c;
+        transform: scale(1.2);
+      }
+
+      #back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #1abc9c;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        display: none;
+        transition: background 0.3s;
+      }
+
+      #back-to-top:hover {
+        background: #16a085;
+      }
+
+      footer {
+        background: #2c3e50;
+        color: #ecf0f1;
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 3rem;
+      }
+
+      footer .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      footer .social-icons a {
+        color: #ecf0f1;
+        font-size: 1.8rem;
+        text-decoration: none;
+        transition: color 0.3s, transform 0.3s;
+      }
+
+      footer .social-icons a:hover {
+        color: #1abc9c;
+        transform: scale(1.2);
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="background-animation">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav>
+      <a href="../../index.html#about">من أنا؟</a>
+      <a href="../../index.html#portfolio">الأعمال</a>
+      <a href="../../index.html#contact">اتصل بي</a>
+    </nav>
+
+    <div class="container">
+      <section class="section">
+        <h3>متجر الفواكه والخضروات</h3>
+        <p>
+          متجر إلكتروني متخصص في بيع الفواكه والخضروات الطازجة مع توصيل سريع إلى المنزل.
+        </p>
+
+        <!-- لقطات شاشة -->
+        <div class="screenshots">
+          <h3>لقطات شاشة للتطبيق</h3>
+          <div class="screenshots-grid">
+            <img src="images/screenshot1.jpg" alt="لقطة شاشة 1" />
+            <img src="images/screenshot2.jpg" alt="لقطة شاشة 2" />
+            <img src="images/screenshot3.jpg" alt="لقطة شاشة 3" />
+            <img src="images/screenshot4.jpg" alt="لقطة شاشة 4" />
+          </div>
+        </div>
+
+        <!-- ميزات التطبيق -->
+        <div class="features">
+          <h3>ميزات المتجر</h3>
+          <ul>
+            <li>
+              <i class="fas fa-check"></i> عرض الفواكه والخضروات الطازجة.
+            </li>
+            <li>
+              <i class="fas fa-check"></i> توصيل سريع إلى المنزل.
+            </li>
+           
+            <li>
+              <i class="fas fa-check"></i> واجهة مستخدم بسيطة وسهلة الاستخدام.
+            </li>
+            <li>
+              <i class="fas fa-check"></i> دعم اللغة العربية بشكل كامل.
+            </li>
+          </ul>
+        </div>
+
+        <!-- الأسئلة الشائعة -->
+        <div class="faq">
+          <h3>الأسئلة الشائعة</h3>
+          
+          <div class="faq-item">
+            <h4>هل يدعم المتجر الأجهزة القديمة؟</h4>
+            <p>
+              نعم، المتجر يدعم الأجهزة الحديثة والقديمة مع ضمان الأداء المثالي.
+            </p>
+          </div>
+
+          <div class="faq-item">
+            <h4>هل يمكن التوصيل إلى أي مكان؟</h4>
+            <p>
+              نعم، المتجر يوفر خدمة التوصيل إلى معظم المناطق.
+            </p>
+          </div>
+        </div>
+
+        <!-- زر العودة للأعلى -->
+        <button id="back-to-top" title="العودة للأعلى">
+          <i class="fas fa-arrow-up"></i>
+        </button>
+      </section>
+    </div>
+
+    <footer>
+      <div class="social-icons">
+        <a href="https://www.instagram.com" target="_blank"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a href="https://t.me" target="_blank"
+          ><i class="fab fa-telegram"></i
+        ></a>
+        <a href="https://www.facebook.com" target="_blank"
+          ><i class="fab fa-facebook"></i
+        ></a>
+        <a href="https://wa.me" target="_blank"
+          ><i class="fab fa-whatsapp"></i
+        ></a>
+        <a href="https://www.linkedin.com" target="_blank"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <a href="https://github.com" target="_blank"
+          ><i class="fab fa-github"></i
+        ></a>
+      </div>
+      <p>&copy; 2025 جميع الحقوق محفوظة - رضا عماد</p>
+    </footer>
+
+    <script>
+      // JavaScript لزر العودة للأعلى
+      window.onscroll = function () {
+        if (
+          document.body.scrollTop > 20 ||
+          document.documentElement.scrollTop > 20
+        ) {
+          document.getElementById("back-to-top").style.display = "block";
+        } else {
+          document.getElementById("back-to-top").style.display = "none";
+        }
+      };
+
+      document.getElementById("back-to-top").onclick = function () {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      };
+    </script>
+  </body>
+</html>
